@@ -3,43 +3,95 @@
 <meta name="viewport" content="width=device-width, user-scalable=no,
 initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 <meta charset="utf-8"/>
-<meta name="theme-color" content="#e2eaf1">
+<meta name="theme-color" content="#88c5e3">
 <title>MULTIRICERCA</title>
 <script>
 //script motore di ricerca
 function ricerca() {
 var e = document.moduloric.selmot;
 var sito = e.options[e.selectedIndex].value;
+if (sito=="Seleziona sito") {alert("seleziona sito"); return;}
 var strcer = document.moduloric.stringadacerc.value;
 window.open(sito+strcer);
 }
 </script>
 
 <style>
-#multiricerca {
-padding:5%;
-height:200px;
-background-color:#87cefa;
+body {
+background:#88c5e3;  
 }
+
+#multiricerca {
+padding:6%;
+background-color:#87cefa;
+border-radius:25px;
+}
+
+input,select {
+height:50px;
+border-radius:20px;
+padding-left:12px;
+font-size:120%;
+font-weight:bold;
+}
+
 input {
-height:30px;
+width:50%;
+}
+
+select {
+float:left; 
+appearance:none;
+}
+
+
+.bottone {
+font-weight:bold;
+height:35px;
+margin: 0 auto;
+display:none;
+} 
+
+#avviso {
+margin-top:12px; 
+background:#ffffff; 
+font-size:120%; 
+padding:2.4%;
+}
+
+
+/*schermo piccolo*/  
+@media only screen and (max-width: 768px) {
+  input,select {
+    width:100%;
+  }
+#avviso {
+margin-top:20%; 
 }
 </style>
+
+  
+
 </head>
 
 <body>
 <!--Multiricerca-->
-<h1>Multiricerca</h1>
+<header><h1>&nbsp;&nbsp;Multiricerca</h1></header>
 <section id="multiricerca" class="sezioni">
-<form name="moduloric" class="testocentrato">
-<input id="campric" class="campost" style="width:50%; height:30px;" name="stringadacerc" placeholder="cerca" type="text">
-<select name="selmot" class="selst" size=”1″ style="height:30px;"> 
+<form name="moduloric" class="testocentrato" onsubmit="ricerca()">
+<input id="campric" class="campost"  name="stringadacerc" placeholder="Cerca" type="search">
+<select name="selmot" class="selst" size=”1″ style=""> 
+<option select="select">Seleziona sito</option>
 <option value="https://www.google.it/search?ei=WVNhXZTTH_qAi-gPxuKXkA0&q=">Google</option>
 <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
 <option value="https://www.ecosia.org/search?q=">Ecosia</option>
 <option value="https://www.bing.com/search?q=">Bing</option>
-<option value="https://flipboard.com/search/">Flipboard</option>
+<option value="https://it.search.yahoo.com/search?p=">Yahoo</option>
+<option value="https://www.qwant.com/?q=">Qwant</option>
+<option value="https://www.wikihow.it/wikiHowTo?search=">Wikihow</option>
 <option value="https://www.youtube.com/results?search_query=">Youtube</option>
+<option style="display:none;" value="https://www.facebook.com/watch/search/?q=">Facebook Watch</option>
+<option value="https://news.google.com/search?q=">GoogleNews</option>
 <option value="https://www.dailymotion.com/search/">Dailymotion</option>
 <option value="https://it.wikipedia.org/wiki/">Wikipedia</option>
 <option value="https://www.sofascore.com/it/cerca?q=">Sofascore</option>
@@ -51,10 +103,17 @@ height:30px;
 <option value="https://alternativeto.net/browse/search?q=">AlternativeTo</option>
 <option value="https://www.imdb.com/find?q=">IMDB</option>
 <option value="https://search.f-droid.org/?q=">F-Droid</option>
+<option value="https://www.apkmirror.com/?post_type=app_release&searchtype=apk&s=">ApkMirror</option>
+<option value="https://memory-alpha.fandom.com/wiki/Special:Search?query=">Memory Alpha (Star Trek Wiki)</option>
 </select>
 </form>
-<button onclick="javascript:ricerca()" class="bottone style="height:30px;">AVVIA RICERCA</button>
+<button onclick="javascript:ricerca()" class="bottone">AVVIA RICERCA</button>
+<p id="avviso">
+Tanti motori di ricerca nella stessa pagina.
+</p>
 </section>
+<footer style="text-align:center; margin-top:20px;"><strong>by il Gem</strong>
+</footer>
 </body>
 </html>
 <!--fine multiricerca-->
